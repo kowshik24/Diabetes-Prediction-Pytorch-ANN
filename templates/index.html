@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            background: url("/static/diabetes-background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(246, 246, 246, 0.9);
+            opacity: 90%;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px #000;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            color: #444;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            background-color: #007BFF;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 22px;
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="pregnancies">Pregnancies:</label><br>
+            <input type="number" id="pregnancies" name="Pregnancies" required><br>
+            <label for="glucose">Glucose:</label><br>
+            <input type="number" id="glucose" name="Glucose" required><br>
+            <label for="bloodpressure">BloodPressure:</label><br>
+            <input type="number" id="bloodpressure" name="BloodPressure" required><br>
+            <label for="skinthickness">SkinThickness:</label><br>
+            <input type="number" id="skinthickness" name="SkinThickness" required><br>
+            <label for="insulin">Insulin:</label><br>
+            <input type="number" id="insulin" name="Insulin" required><br>
+            <label for="bmi">BMI:</label><br>
+            <input type="number" id="bmi" name="BMI" required><br>
+            <label for="diabetespedigreefunction">DiabetesPedigreeFunction:</label><br>
+            <input type="number" id="diabetespedigreefunction" name="DiabetesPedigreeFunction" step="any"><br>
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="Age"><br><br>
+            <input type="submit" value="Predict">
+        </form>
+        {% if result %}
+        <div class="result">
+            Result: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
